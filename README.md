@@ -7,5 +7,5 @@ read from a file descriptor.
 - **Return the \n character except if EOF is reached**
 - **Forbidden:**
   - Libft
-  - lseek()
+  - `lseek()`
   - Global Variables
