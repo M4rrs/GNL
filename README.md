@@ -1,4 +1,4 @@
-# Get_Next_Line
+# 42 Get_Next_Line
 This project is about programming a function that returns a line
 read from a file descriptor.
 
@@ -9,3 +9,6 @@ read from a file descriptor.
   - Libft
   - `lseek()`
   - Global Variables
+- Compile with flag, -D BUFFER_SIZE=XX
+	`gcc -Wall -Werror -Wextra -D BUFFER_SIZE=XX *.c`
+- Don't be an idiot like me, each time gnl is run, it returns only ***one*** line. Say you have 3 lines in 1 .txt file, you would have to run gnl 3 times to output all 3 lines.
