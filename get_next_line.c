@@ -70,12 +70,12 @@ char *get_next_line(int fd)
 	return (get_line(&res));
 }
 
-int	main()
-{
-    int fd = open("test.txt", O_RDONLY);
-	printf("%s\n",get_next_line(fd));
-	printf("\n second run ------------------------- \n");
-	printf("%s\n",get_next_line(fd));
-	printf("\n third run ------------------------- \n");
-	printf("%s\n",get_next_line(fd));
-}
+// int	main()
+// {
+//     int fd = open("test.txt", O_RDONLY);
+// 	printf("%s\n",get_next_line(fd));
+// 	printf("\n second run ------------------------- \n");
+// 	printf("%s\n",get_next_line(fd));
+// 	printf("\n third run ------------------------- \n");
+// 	printf("%s\n",get_next_line(fd));
+// }
