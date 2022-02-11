@@ -66,7 +66,7 @@ char *get_next_line(int fd)
 	char	*temp;
 	int	r;
 	
-	if (!fd || BUFFER_SIZE < 1)
+	if (fd < 1 || fd > 1024 || BUFFER_SIZE < 1)
 		return (0);
 	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
@@ -86,15 +86,17 @@ char *get_next_line(int fd)
 	}
 	 //everytime read is run, checks for a \n in buff. Stops the whole loop. ^
 	free(buff);
+	if (r < 0 || (r == 0 && !res))
+		return (0);
 	return (get_line(&res));
 }
 
-// int	main()
-// {
-//     int fd = open("test.txt", O_RDONLY);
-// 	printf("%s\n",get_next_line(fd));
-// 	// printf("\n second run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// 	// printf("\n third run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// }
+int	main()
+{
+    int fd = open("test.txt", O_RDONLY);
+	printf("%s\n",get_next_line(fd));
+	// printf("\n second run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+	// printf("\n third run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+}
