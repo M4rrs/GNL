@@ -4,6 +4,25 @@
 
 /*Trying to make it work, definitely does not follow normi. Yet.
 Some comments are temp, leave me alone.*/
+
+static char	*ft_strdup(const char *s)
+{
+	char	*dup;
+	int		i;
+
+	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	i = 0;
+	if (!dup)
+		return (0);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
 static int ft_read(int fd, char **buff, int *r)
 {
 	int	res;
@@ -47,7 +66,7 @@ char *get_next_line(int fd)
 	char	*temp;
 	int	r;
 	
-	if (BUFFER_SIZE < 1)
+	if (!fd || BUFFER_SIZE < 1)
 		return (0);
 	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
@@ -70,12 +89,12 @@ char *get_next_line(int fd)
 	return (get_line(&res));
 }
 
-// int	main()
-// {
-//     int fd = open("test.txt", O_RDONLY);
-// 	printf("%s\n",get_next_line(fd));
-// 	printf("\n second run ------------------------- \n");
-// 	printf("%s\n",get_next_line(fd));
-// 	printf("\n third run ------------------------- \n");
-// 	printf("%s\n",get_next_line(fd));
-// }
+int	main()
+{
+    int fd = open("test.txt", O_RDONLY);
+	printf("%s\n",get_next_line(fd));
+	// printf("\n second run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+	// printf("\n third run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+}

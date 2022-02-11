@@ -10,23 +10,23 @@ size_t	ft_strlen(const char	*s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
-{
-	char	*dup;
-	int		i;
+// static char	*ft_strdup(const char *s)
+// {
+// 	char	*dup;
+// 	int		i;
 
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	i = 0;
-	if (!dup)
-		return (0);
-	while (s[i])
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
+// 	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+// 	i = 0;
+// 	if (!dup)
+// 		return (0);
+// 	while (s[i])
+// 	{
+// 		dup[i] = s[i];
+// 		i++;
+// 	}
+// 	dup[i] = '\0';
+// 	return (dup);
+// }
 
 char	*ft_strjoin(char const	*s1, char const	*s2)
 {
@@ -48,27 +48,43 @@ char	*ft_strjoin(char const	*s1, char const	*s2)
 }
 
 // allocates mem, creates a substring based on starting length and end length.
-char	*ft_substr(char const	*s, unsigned int	start, size_t	len)
+// char	*ft_substr(char const	*s, unsigned int	start, size_t	len)
+// {
+// 	unsigned int				i;
+// 	char						*str;
+
+// 	if (!s)
+// 		return (NULL);
+// 	if (start >= ft_strlen(s))
+// 		return (ft_strdup(""));
+// 	i = 0;
+// 	if (ft_strlen(s) < len)
+// 		str = (char *)malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+// 	else
+// 		str = (char *)malloc(sizeof(char) * (len + 1));
+// 	if (str == 0)
+// 		return (0);
+// 	while (s[start + i] && i < len)
+// 	{
+// 		str[i] = s[start + i];
+// 		i++;
+// 	}
+// 	str[i] = 0;
+// 	return (str);
+// }
+char	*ft_substr(char const	*s, unsigned int	start,size_t	len)
 {
-	unsigned int				i;
-	char						*str;
+	unsigned int	i;
+	char	*str;
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	if (ft_strlen(s) < len)
-		str = (char *)malloc(sizeof(char) * (ft_strlen(s) - start + 1));
-	else
-		str = (char *)malloc(sizeof(char) * (len + 1));
-	if (str == 0)
-		return (0);
-	while (s[start + i] && i < len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
+	while (start < len)
+		str[i++] = s[start++];
 	str[i] = 0;
 	return (str);
 }
