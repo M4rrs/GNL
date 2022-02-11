@@ -31,6 +31,15 @@ static int ft_read(int fd, char **buff, int *r)
 	return (res);
 }
 
+static void	ft_free(char **s)
+{
+	if (s)
+	{
+		free(*s);
+		*s = NULL;
+	}
+}
+
 static char	*get_line(char	**str)
 {
 	int	i;
@@ -44,17 +53,17 @@ static char	*get_line(char	**str)
 	{
 		res = ft_substr(*str, 0, i + 1); //creates substring of the line to return from start to \n
 		temp = ft_strdup(*str + i + 1); // duplicates the remainder of the string
-		free(*str);
+		ft_free(str);
 		if (temp[0] != '\0')
 			*str = temp; //str will now contain remainder of the string, along with the characters in the next round when re-run
 		else
-			free(temp);
+			ft_free(&temp);
 	}
 	//else //str unav, what do you do?
 	else
 	{
 		res = ft_strdup(*str);
-		free(*str);
+		ft_free(str);
 	}
 	return (res);
 }
@@ -79,13 +88,13 @@ char *get_next_line(int fd)
 			res = ft_bzero(0);
 			//res = 0;
 		temp = ft_strjoin(res, buff);
-		free(res);
+		ft_free(&res);
 		res = temp;
 		if (ft_strchr(buff, '\n'))
 			break;
 	}
 	 //everytime read is run, checks for a \n in buff. Stops the whole loop. ^
-	free(buff);
+	ft_free(&buff);
 	if (r < 0 || (r == 0 && !res))
 		return (0);
 	return (get_line(&res));
