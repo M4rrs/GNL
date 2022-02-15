@@ -26,6 +26,7 @@ static char	*ft_strdup(const char *s)
 static int ft_read(int fd, char **buff, int *r)
 {
 	int	res;
+
 	res = read(fd, *buff, BUFFER_SIZE);
 	*r = res;
 	return (res);
@@ -75,7 +76,7 @@ char *get_next_line(int fd)
 	char	*temp;
 	int	r;
 	
-	if (fd < 1 || fd > 1024 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (0);
 	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
@@ -86,14 +87,14 @@ char *get_next_line(int fd)
 		buff[r] = 0; //r basically points to the end of the arr, so allocate \0
 		if (!res)
 			res = ft_bzero(0);
-			//res = 0;
+			//res = 0; <- this didnt work, gave me segfault
 		temp = ft_strjoin(res, buff);
 		ft_free(&res);
 		res = temp;
-		if (ft_strchr(buff, '\n'))
+		if (ft_strchr(buff, '\n')) //stops reading when \n found
 			break;
 	}
-	 //everytime read is run, checks for a \n in buff. Stops the whole loop. ^
+	
 	ft_free(&buff);
 	if (r < 0 || (r == 0 && !res))
 		return (0);
@@ -108,4 +109,14 @@ char *get_next_line(int fd)
 // 	// printf("%s\n",get_next_line(fd));
 // 	// printf("\n third run ------------------------- \n");
 // 	// printf("%s\n",get_next_line(fd));
+// }
+
+// int main()
+// {
+// 	int fd;
+// 	char *s;
+
+// 	fd = 0;
+// 	while ((s = get_next_line(fd)))
+// 		printf("%s\n", s);
 // }
