@@ -10,6 +10,7 @@ static char	*ft_strdup(const char *s)
 
 	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
+
 	if (!dup)
 		return (0);
 	while (s[i])
@@ -58,13 +59,13 @@ static void	ft_free(char **s)
 //the next call.
 static char	*get_line(char	**str)
 {
-	int	i;
+	int			i;
 	char	*temp;
-	char	*res;
+	char	 *res;
 
 	i = 0;
 	while ((*str)[i] && (*str)[i] != '\n')
-		i++;
+		i++ ;
 	if((*str)[i])
 	{
 		res = ft_substr(*str, 0, i + 1);
