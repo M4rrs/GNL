@@ -11,6 +11,10 @@ read from a file descriptor.
   - Global Variables
 - Compile with flag, -D BUFFER_SIZE=XX
 	`gcc -Wall -Werror -Wextra -D BUFFER_SIZE=XX *.c`
+- Undefined behaviour:
+  - If the file descriptor changes since the last call, whereas read() has not finished reading from the first fd.
+  - When reading binary files. 
+
 - Don't be an idiot like me, each time gnl is run, it returns only ***one*** line. Say you have 3 lines in 1 .txt file, you would have to run gnl 3 times to output all 3 lines.
 
 ## Valgrind
@@ -18,5 +22,8 @@ Lowkey saved my life.
 
 - How to run Valgrind [here](https://stackoverflow.com/questions/5134891/how-do-i-use-valgrind-to-find-memory-leaks)
 - Understanding [Valgrind's messages](https://epitech-2022-technical-documentation.readthedocs.io/en/latest/valgrind.html)
+
+## Tester
+[Tripouille/gnlTester: Tester for the get_next_line project of 42 school](https://github.com/Tripouille/gnlTester)
 
 **A REMINDER TO REMOVE ALL COMMENTS WITHIN THE CODE BEFORE YOU SUBMIT THANKS**
