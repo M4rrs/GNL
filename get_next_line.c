@@ -65,7 +65,7 @@ static char	*get_line(char	**str)
 	i = 0;
 	while ((*str)[i] && (*str)[i] != '\n')
 		i++ ;
-	if((*str)[i])
+	if ((*str)[i])
 	{
 		res = ft_substr(*str, 0, i + 1);
 		temp = ft_strdup(*str + i + 1);
@@ -81,19 +81,19 @@ static char	*get_line(char	**str)
 	}
 	return (res);
 }
+
 //ret 0 if invalid fd or buff size.
 //ret 0 if malloc failed.
 // stops reading when a nl is found.
 //buff has read content, temp is where it is joined to res,
 //and res is updated.
-
 char *get_next_line(int fd)
 {
 	static char	*res;
-	char	*buff;
-	char	*temp;
+	char		*buff;
+	char		*temp;
 	int	r;
-	
+
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (0);
 	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
@@ -108,7 +108,7 @@ char *get_next_line(int fd)
 		ft_free(&res);
 		res = temp;
 		if (ft_strchr(buff, '\n'))
-			break;
+			break ;
 	}
 	ft_free(&buff);
 	if (r < 0 || (r == 0 && !res))
