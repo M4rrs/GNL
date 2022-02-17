@@ -87,7 +87,7 @@ static char	*get_line(char	**str)
 // stops reading when a nl is found.
 //buff has read content, temp is where it is joined to res,
 //and res is updated.
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*res;
 	char		*buff;
