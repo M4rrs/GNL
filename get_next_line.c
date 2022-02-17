@@ -92,7 +92,7 @@ char *get_next_line(int fd)
 	static char	*res;
 	char		*buff;
 	char		*temp;
-	int	r;
+	int			r;
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (0);
