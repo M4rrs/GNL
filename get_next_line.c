@@ -58,9 +58,9 @@ static void	ft_free(char **s)
 //the next call.
 static char	*get_line(char	**str)
 {
-	int			i;
+	int		i;
 	char	*temp;
-	char	 *res;
+	char	*res;
 
 	i = 0;
 	while ((*str)[i] && (*str)[i] != '\n')
