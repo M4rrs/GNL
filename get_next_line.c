@@ -8,8 +8,8 @@ static char	*ft_strdup(const char *s)
 	char	*dup;
 	int		i;
 
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
+	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!dup)
 		return (0);
 	while (s[i])
@@ -69,6 +69,7 @@ static char	*get_line(char	**str)
 	{
 		res = ft_substr(*str, 0, i + 1);
 		temp = ft_strdup(*str + i + 1);
+		ft_free(str);
 		if (temp[0] != '\0')
 			*str = temp;
 		else
@@ -116,15 +117,15 @@ char	*get_next_line(int fd)
 	return (get_line(&res));
 }
 
-// int	main()
-// {
-//     int fd = open("test.txt", O_RDONLY);
-// 	printf("%s\n",get_next_line(fd));
-// 	// printf("\n second run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// 	// printf("\n third run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// }
+int	main()
+{
+    int fd = open("test.txt", O_RDONLY);
+	printf("%s\n",get_next_line(fd));
+	// printf("\n second run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+	// printf("\n third run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+}
 
 // int main()
 // {
