@@ -10,7 +10,6 @@ static char	*ft_strdup(const char *s)
 
 	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
-
 	if (!dup)
 		return (0);
 	while (s[i])
@@ -27,7 +26,7 @@ static char	*ft_strdup(const char *s)
 // data read is uploaded to the buffer
 // Not really sure why calling read on its own in
 // the main func didn't work
-static int ft_read(int fd, char **buff, int *r)
+static int	ft_read(int fd, char **buff, int *r)
 {
 	int	res;
 
