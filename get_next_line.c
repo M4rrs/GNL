@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-/*Trying to make it work, definitely does not follow normi. Yet.
-Some comments are temp, leave me alone.*/
-
+// allocates mem and duplicates the string.
 static char	*ft_strdup(const char *s)
 {
 	char	*dup;
@@ -23,6 +21,11 @@ static char	*ft_strdup(const char *s)
 	return (dup);
 }
 
+// reads from an fd,
+// sets the number of bytes read to a ptr,
+// data read is uploaded to the buffer
+// Not really sure why calling read on its own in
+// the main func didn't work
 static int ft_read(int fd, char **buff, int *r)
 {
 	int	res;
@@ -32,6 +35,11 @@ static int ft_read(int fd, char **buff, int *r)
 	return (res);
 }
 
+//because free doesn't automatically re-initialize to NULL,
+// so it needs to be done manually.
+// But free is used a few times in this code so having to 
+// re-initialize NULL might take up more lines and then normi
+// starts yelling at me
 static void	ft_free(char **s)
 {
 	if (s)
@@ -41,6 +49,13 @@ static void	ft_free(char **s)
 	}
 }
 
+//when last updated buffer contains a nl, this func will be called,
+// loops through the buffer to find nl,
+// trims the string from the start to the nl,
+// remainder will be duplicated into temp, str is freed,
+// and temp will be assigned to str, str now contains
+// the remainder of the string, which will be updated for
+//the next call.
 static char	*get_line(char	**str)
 {
 	int	i;
@@ -50,17 +65,15 @@ static char	*get_line(char	**str)
 	i = 0;
 	while ((*str)[i] && (*str)[i] != '\n')
 		i++;
-	if((*str)[i]) //str avail
+	if((*str)[i])
 	{
-		res = ft_substr(*str, 0, i + 1); //creates substring of the line to return from start to \n
-		temp = ft_strdup(*str + i + 1); // duplicates the remainder of the string
-		ft_free(str);
+		res = ft_substr(*str, 0, i + 1);
+		temp = ft_strdup(*str + i + 1);
 		if (temp[0] != '\0')
-			*str = temp; //str will now contain remainder of the string, along with the characters in the next round when re-run
+			*str = temp;
 		else
 			ft_free(&temp);
 	}
-	//else //str unav, what do you do?
 	else
 	{
 		res = ft_strdup(*str);
@@ -68,7 +81,12 @@ static char	*get_line(char	**str)
 	}
 	return (res);
 }
-//ret 0 if fd is unavail or buffer invalid?
+//ret 0 if invalid fd or buff size.
+//ret 0 if malloc failed.
+// stops reading when a nl is found.
+//buff has read content, temp is where it is joined to res,
+//and res is updated.
+
 char *get_next_line(int fd)
 {
 	static char	*res;
@@ -80,21 +98,18 @@ char *get_next_line(int fd)
 		return (0);
 	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
-		return (0); //malloc fail
-
+		return (0);
 	while (ft_read(fd, &buff, &r) > 0)
 	{
-		buff[r] = 0; //r basically points to the end of the arr, so allocate \0
+		buff[r] = 0;
 		if (!res)
 			res = ft_bzero(0);
-			//res = 0; <- this didnt work, gave me segfault
 		temp = ft_strjoin(res, buff);
 		ft_free(&res);
 		res = temp;
-		if (ft_strchr(buff, '\n')) //stops reading when \n found
+		if (ft_strchr(buff, '\n'))
 			break;
 	}
-	
 	ft_free(&buff);
 	if (r < 0 || (r == 0 && !res))
 		return (0);
