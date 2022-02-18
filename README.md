@@ -26,7 +26,7 @@ Lowkey saved my life.
 ## Tester
 [Tripouille/gnlTester: Tester for the get_next_line project of 42 school](https://github.com/Tripouille/gnlTester)
 
-![Tester Output](![image](https://user-images.githubusercontent.com/86459918/154621008-75ca3e64-8703-4d01-bfa6-88b2f4976fcb.png)
+![Tester Output](https://user-images.githubusercontent.com/86459918/154621008-75ca3e64-8703-4d01-bfa6-88b2f4976fcb.png)
 
 
 **A REMINDER TO REMOVE ALL COMMENTS WITHIN THE CODE BEFORE YOU SUBMIT THANKS**
