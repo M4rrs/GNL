@@ -29,6 +29,6 @@ Lowkey saved my life.
 ![Tester Output](https://user-images.githubusercontent.com/86459918/154621008-75ca3e64-8703-4d01-bfa6-88b2f4976fcb.png)
 ![Tester Output](https://user-images.githubusercontent.com/86459918/154621195-42bab1c7-87b9-48c4-b5ed-a2cea7538e66.png)
 
-## References 
+## Reference
 [Input-output system calls in C | Create, Open, Close, Read, Write](https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write/)
-
+[Reading from a file with read()](https://stackoverflow.com/questions/19769542/reading-from-file-using-read-function)
