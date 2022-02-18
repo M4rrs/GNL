@@ -27,6 +27,4 @@ Lowkey saved my life.
 [Tripouille/gnlTester: Tester for the get_next_line project of 42 school](https://github.com/Tripouille/gnlTester)
 
 ![Tester Output](https://user-images.githubusercontent.com/86459918/154621008-75ca3e64-8703-4d01-bfa6-88b2f4976fcb.png)
-
-
-**A REMINDER TO REMOVE ALL COMMENTS WITHIN THE CODE BEFORE YOU SUBMIT THANKS**
+![Tester Output](https://user-images.githubusercontent.com/86459918/154621195-42bab1c7-87b9-48c4-b5ed-a2cea7538e66.png)
