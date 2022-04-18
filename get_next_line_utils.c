@@ -65,20 +65,20 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-//allocates sized mem, fills with 0
-char	*ft_bzero(size_t size)
-{
-	char	*res;
-	size_t	i;
+// //allocates sized mem, fills with 0
+// char	*ft_bzero(size_t size)
+// {
+// 	char	*res;
+// 	size_t	i;
 
-	res = (char *)malloc(sizeof(char) * (size + 1));
-	if (!res)
-		return (0);
-	i = 0;
-	while (i < size + 1)
-	{
-		*(char *)(res + i) = 0;
-		i++;
-	}
-	return (res);
-}
+// 	res = (char *)malloc(sizeof(char) * (size + 1));
+// 	if (!res)
+// 		return (0);
+// 	i = 0;
+// 	while (i < size + 1)
+// 	{
+// 		*(char *)(res + i) = 0;
+// 		i++;
+// 	}
+// 	return (res);
+// }

@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	{
 		buff[r] = 0;
 		if (!res)
-			res = ft_bzero(0);
+			res = ft_strdup("");
 		temp = ft_strjoin(res, buff);
 		ft_free(&res);
 		res = temp;
@@ -117,15 +117,15 @@ char	*get_next_line(int fd)
 	return (get_line(&res));
 }
 
-// int	main()
-// {
-//     int fd = open("test.txt", O_RDONLY);
-// 	printf("%s\n",get_next_line(fd));
-// 	// printf("\n second run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// 	// printf("\n third run ------------------------- \n");
-// 	// printf("%s\n",get_next_line(fd));
-// }
+int	main()
+{
+    int fd = open("test.txt", O_RDONLY);
+	printf("%s\n",get_next_line(fd));
+	// printf("\n second run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+	// printf("\n third run ------------------------- \n");
+	// printf("%s\n",get_next_line(fd));
+}
 
 // int main()
 // {
